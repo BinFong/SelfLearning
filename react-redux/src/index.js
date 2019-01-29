@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from './store/reducers';
 import * as serviceWorker from './serviceWorker';
+import './style/index.less';
 
 ReactDOM.render(
   <Provider store={createStore(reducers)}>

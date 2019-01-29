@@ -1,12 +1,8 @@
 import React from 'react';
+import { Card } from 'antd';
 
 export default ({ onClick, id, text, completed }) => (
-  <li
-    onClick={onClick}
-    style={{
-      textDecoration: completed ? 'line-through' : 'none'
-    }}
-  >
-    {`ID:${id} - Text: ${text}`}
-  </li>
+  <Card title={`ID: ${id}`} bordered={false}>
+    <p>`${text}`</p>
+  </Card>
 );
