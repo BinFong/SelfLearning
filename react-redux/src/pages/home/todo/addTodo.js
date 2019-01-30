@@ -16,6 +16,7 @@ class AddTodo extends React.Component {
   };
 
   handlerSubmit = e => {
+    // console.log(this.props);
     this.props.btnClick(this.state.value);
   };
 

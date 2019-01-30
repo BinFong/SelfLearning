@@ -1,16 +1,16 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { addTodo } from '../../../store/actions/index';
-import AddTodoForm from '../todo/addTodo';
+import AddTodo from '../todo/addTodo';
 
-const AddTodo = ({ dispatch }) => {
-  return (
-    <AddTodoForm
-      btnClick={todo => {
-        dispatch(addTodo(todo));
-      }}
-    />
-  );
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    btnClick: value => {
+      dispatch(addTodo(value));
+    }
+  };
 };
 
-export default connect()(AddTodo);
+export default connect(
+  null,
+  mapDispatchToProps
+)(AddTodo);

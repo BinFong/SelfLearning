@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 import Route from './router';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import reducers from './store/reducers';
 import * as serviceWorker from './serviceWorker';
 import './style/index.less';
 
+const store = createStore(reducers, composeWithDevTools());
+
 ReactDOM.render(
-  <Provider store={createStore(reducers)}>
+  <Provider store={store}>
     <Route />
   </Provider>,
   document.getElementById('root')
