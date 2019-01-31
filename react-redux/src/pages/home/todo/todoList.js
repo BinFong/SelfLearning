@@ -1,8 +1,8 @@
 import React from 'react';
 // import Todo from './todo';
-import { List, Icon } from 'antd';
+import { List, Icon, Checkbox, Button } from 'antd';
 
-export default ({ todoList, onTodoClick }) => (
+export default ({ todoList, toggleTodo, deleteTodo }) => (
   <List
     className="list"
     size="large"
@@ -14,6 +14,24 @@ export default ({ todoList, onTodoClick }) => (
     }
     bordered
     dataSource={todoList}
-    renderItem={item => <List.Item key={item.id}>{item.text}</List.Item>}
+    renderItem={item => (
+      <List.Item
+        key={item.id}
+        actions={[
+          <Button type="danger" size="small" onClick={()=> {deleteTodo(item.id)}}>
+            Delete
+          </Button>
+        ]}
+      >
+        <Checkbox
+          checked={item.completed}
+          onClick={() => {
+            toggleTodo(item.id);
+          }}
+        >
+          {item.text}
+        </Checkbox>
+      </List.Item>
+    )}
   />
 );

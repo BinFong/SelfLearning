@@ -16,8 +16,10 @@ class AddTodo extends React.Component {
   };
 
   handlerSubmit = e => {
-    // console.log(this.props);
     this.props.btnClick(this.state.value);
+    this.setState({
+      value: ''
+    });
   };
 
   handlerCancel = e => {
@@ -30,7 +32,12 @@ class AddTodo extends React.Component {
     return (
       <Form layout="inline" className="form">
         <Form.Item>
-          <Input placeholder="输入待办事项" onChange={this.handlerChange} />
+          <Input
+            type="text"
+            placeholder="输入待办事项"
+            onChange={this.handlerChange}
+            value={this.state.value}
+          />
         </Form.Item>
         <Form.Item>
           <Button

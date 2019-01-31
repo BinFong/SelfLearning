@@ -1,6 +1,24 @@
 import * as actionType from '../actions/actionType';
 
-const todo = (state = [], action) => {
+const defaultTodoList = [
+  {
+    id: 0,
+    text: '阅读三篇技术文章',
+    completed: false
+  },
+  {
+    id: 1,
+    text: '写下今天的任务计划',
+    completed: true
+  },
+  {
+    id: 2,
+    text: '修复Bugs',
+    completed: false
+  }
+];
+
+const todo = (state = defaultTodoList, action) => {
   switch (action.type) {
     case actionType.ADD_TODO:
       return [
@@ -11,9 +29,13 @@ const todo = (state = [], action) => {
           completed: false
         }
       ];
+    case actionType.TOGGLE_TODO:
+      return state.map(todo => todo.id === action.id ? Object.assign(todo, { completed: !todo.completed }) : todo)
+    case actionType.DELETE_TODO:
+      return state.filter(todo => todo.id !== action.id )
     default:
       return state;
   }
 };
 
-export default todo
+export default todo;
