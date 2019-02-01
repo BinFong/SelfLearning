@@ -3,12 +3,16 @@ import ReactDOM from 'react-dom';
 import Route from './router';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import Thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension';
 import reducers from './store/reducers';
 import * as serviceWorker from './serviceWorker';
 import './style/index.less';
 
-const store = createStore(reducers, composeWithDevTools());
+const middleWare = [Thunk, composeWithDevTools]
+
+// const store = createStore(reducers, composeWithDevTools());
+const store = createStore(reducers, middleWare);
 
 ReactDOM.render(
   <Provider store={store}>
