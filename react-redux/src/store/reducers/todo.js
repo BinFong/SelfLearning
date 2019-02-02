@@ -32,7 +32,20 @@ const todo = (state = defaultTodoList, action) => {
     case actionType.TOGGLE_TODO:
       return state.map(todo => todo.id === action.id ? Object.assign(todo, { completed: !todo.completed }) : todo)
     case actionType.DELETE_TODO:
-      return state.filter(todo => todo.id !== action.id )
+      return state.map(todo => todo.id !== action.id )
+    case actionType.DELETE_TODO_LOADING:
+      return {
+        state: 'loading'
+      }
+    case actionType.DELETE_TODO_SUCCESS:
+      return {
+        state: 'success',
+        data: state.map(todo => todo.id !== action.id)
+      }
+    case actionType.DELETE_TODO_ERROR:
+      return {
+        state: 'error'
+      }
     default:
       return state;
   }
